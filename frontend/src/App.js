@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./App.css"; // Import custom styles
 
 function App() {
   const [form, setForm] = useState({
@@ -9,7 +10,8 @@ function App() {
     wind: "",
   });
   const [result, setResult] = useState(null);
-  const [accuracy,setAcc] = useState(null);
+  const [accuracy, setAcc] = useState(null);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -23,45 +25,47 @@ function App() {
       wind: parseFloat(form.wind),
     });
     setResult(res.data.prediction);
-    setAcc(res.data.accuracy)
+    setAcc(res.data.accuracy);
   };
 
   return (
-    <div style={{ padding: 30 }}>
-      <h2>Weather Predictor</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="app-container">
+      <h2 className="title">Weather Predictor</h2>
+      <form onSubmit={handleSubmit} className="form-container">
         <input
           name="precipitation"
           placeholder="Precipitation"
           onChange={handleChange}
           required
+          className="input-field"
         />
-        <br />
         <input
           name="temp_max"
           placeholder="Max Temp"
           onChange={handleChange}
           required
+          className="input-field"
         />
-        <br />
         <input
           name="temp_min"
           placeholder="Min Temp"
           onChange={handleChange}
           required
+          className="input-field"
         />
-        <br />
         <input
           name="wind"
           placeholder="Wind"
           onChange={handleChange}
           required
+          className="input-field"
         />
-        <br />
-        <button type="submit">Predict</button>
+        <button type="submit" className="submit-button">
+          Predict
+        </button>
       </form>
-      {result && <h3>Prediction: {result}</h3>}
-      <h3>{accuracy}</h3>
+      {result && <h3 className="result">Prediction: {result}</h3>}
+      <h3 className="accuracy">{accuracy}</h3>
     </div>
   );
 }
