@@ -1,4 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+backend/model.py
 
 # dependencies
 /node_modules
@@ -24,7 +25,6 @@ yarn-error.log*
 # Python
 __pycache__/
 *.pyc
-*.pkl
 .env
 
 # Node (if using React/Vite)
@@ -38,3 +38,12 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+node_modules/
+*.log
+model.py/
